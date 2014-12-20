@@ -43,13 +43,13 @@ LIBS=lib/lua5.2.3.a
 #	@echo "DONE"
 
 $(EXEC): clean $(SFMLOBJ)
-	@echo "MAKING EMULATOR"
-	@$(CLANG) $(CXXFLAGS) $(SFMLOBJ) $(SOURCES) -o $@ -lm -ldl -DLUA_OK $(LIBS)
-	@echo "DONE"
-
-nolua: clean $(SFMLOBJ)
 	@echo "MAKING EMULATOR (NO LUA)"
 	@$(CLANG) $(CXXFLAGS) $(SFMLOBJ) $(SOURCES) -o $(EXEC) $(LIBS)
+	@echo "DONE"
+
+lua: clean $(SFMLOBJ)
+	@echo "MAKING EMULATOR"
+	@$(CLANG) $(CXXFLAGS) $(SFMLOBJ) $(SOURCES) -o $@ -lm -ldl -DLUA_OK $(LIBS)
 	@echo "DONE"
 
 core.o: $(CORE)

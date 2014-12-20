@@ -39,7 +39,7 @@ namespace colors {
 struct Color : public NonCopyable
 {
     Color() : Color(0, 0, 0) {}
-    explicit Color(int red, int green, int blue) : r(_r), g(_g), b(_b) {}
+    explicit Color(int red, int green, int blue) : r(red), g(green), b(blue) {}
     Color(int color) : r((color >> 16) & 0xff), g((color >> 8) & 0xff), b(color & 0xff) {}
     Color& operator=(const int) = delete;
     int r, g, b;
