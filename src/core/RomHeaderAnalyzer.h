@@ -66,9 +66,9 @@ class RomHeaderAnalyzer
 public:
     RomHeaderAnalyzer() = delete;
     RomHeaderAnalyzer(const RomHeader& header);
-    void analyze();
     RomHeader header();
 private:
+    void analyze();
     RomHeader header_;
 };
     
