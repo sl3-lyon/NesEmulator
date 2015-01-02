@@ -9,7 +9,7 @@ enum TvSystem { Ntsc, Pal };
 struct RomHeader
 {
     std::vector<int> bits;
-    std::array<int, 1fff> sram;
+    std::array<int, 0x1fff> sram;
     //int PrgRomPagesCount;
     //int ChrRomPagesCount;
 };

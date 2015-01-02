@@ -17,12 +17,11 @@ public:
     std::map<int, int> map() const;
     RomHeader header() const;
 private:
-    void read();
+    void read() throw(std::exception);
     bool is_header_ok() const;
     std::map<int, int> mapping_;
     std::ifstream reader_;
     std::vector<int> header_;
-    TvSystem tvSystem_;
 };
 
 } // core

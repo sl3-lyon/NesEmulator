@@ -23,12 +23,10 @@ RomHeader RomReader::header() const
 {
     RomHeader header;
     header.bits = header_;
-    header.PrgRomPagesCount = header_[4];
-    header.ChrRomPagesCount = header_[5];
     return header;
 }
 
-void RomReader::read()
+void RomReader::read() throw(std::exception)
 {
     int address {};
     while (reader_)
@@ -44,7 +42,6 @@ void RomReader::read()
             break;
         }
     }
-    assert(header.size() == 16 && header_[9] < 2);
     if (!is_header_ok())
     {
         throw tools::NesemuException { "Bad ROM header" };
@@ -65,6 +62,11 @@ bool RomReader::is_header_ok() const
     10: Flags 10 (unofficial)
     11-15: Zero filled
     */
+    if (header_.size() != 16)
+    {
+        return false;
+    }
+    // ...
     return (header_[0] == 'N' && header_[1] == 'E' && header_[2] == 'S' && header_[3] == 0x1a);
 }
 
