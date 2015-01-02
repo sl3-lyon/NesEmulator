@@ -1,19 +1,14 @@
 #ifndef NESEMU_ROMREADER
 #define NESEMU_ROMREADER
 
-#include <fstream>
-#include <map>
-#include <string>
-#include <vector>
+#include <fstream> // std::ifstream
+#include <map>     // std::map
+#include <string>  // std::string
+#include <vector>  // std::vector
+
+#include "RomHeader.h"
 
 namespace core {
-
-struct RomHeader
-{
-    std::vector<int> bits;
-    int PrgRomPagesCount;
-    int ChrRomPagesCount;
-};
 
 class RomReader
 {
@@ -27,6 +22,7 @@ private:
     std::map<int, int> mapping_;
     std::ifstream reader_;
     std::vector<int> header_;
+    TvSystem tvSystem_;
 };
 
 } // core
