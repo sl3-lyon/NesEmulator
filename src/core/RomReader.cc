@@ -1,6 +1,5 @@
 #include "RomReader.h"
 #include "../tools/NesemuException.h"
-#include <exception>
 
 using namespace core;
 
@@ -45,6 +44,7 @@ void RomReader::read()
             break;
         }
     }
+    assert(header.size() == 16 && header_[9] < 2);
     if (!is_header_ok())
     {
         throw tools::NesemuException { "Bad ROM header" };
