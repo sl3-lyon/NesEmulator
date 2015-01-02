@@ -1,7 +1,9 @@
+#include <exception>
 #include <iostream>
 #include "graphics/graphics.h"
 #include "cpu/cpu.h"
 #include "tools/tools.h"
+#include "core/RomReader.h"
 
 #ifdef LUA_OK
 extern "C"
@@ -93,6 +95,5 @@ int main()
     lua_close(L);
 #endif
     graphics::show();
-	
     return 0;
 }

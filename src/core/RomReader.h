@@ -6,8 +6,11 @@
 #include <string>
 #include <vector>
 
+namespace core {
+
 struct RomHeader
 {
+    std::vector<int> bits;
     int PrgRomPagesCount;
     int ChrRomPagesCount;
 };
@@ -25,5 +28,7 @@ private:
     std::ifstream reader_;
     std::vector<int> header_;
 };
+
+} // core
 
 #endif
