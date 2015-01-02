@@ -55,6 +55,10 @@ The format of the header is as follows:
   +------ 0: Board has no bus conflicts; 1: Board has bus conflicts
 *************************************/
 
+/************************************
+// SRAM = Static Random Access Memory
+*************************************/
+
 enum TvSystem { Ntsc, Pal };
 
 class RomHeaderAnalyzer
