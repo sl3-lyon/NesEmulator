@@ -59,6 +59,13 @@ enum TvSystem { Ntsc, Pal };
 
 class RomHeaderAnalyzer
 {
+public:
+    RomHeaderAnalyzer() = delete;
+    RomHeaderAnalyzer(const RomHeader& header);
+    RomHeader header();
+private:
+    void analyze();
+    RomHeader header_;
 };
     
 #endif // NESEMU_ROMHEADERANALYSER
