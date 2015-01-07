@@ -59,6 +59,14 @@ The format of the header is as follows:
 // SRAM = Static Random Access Memory
 *************************************/
 
+/************************************/
+// PRG: Program data (executable code)
+/************************************/
+
+/************************************/
+// CHR: Resources (sprites...)
+/************************************/
+
 class RomHeaderAnalyzer
 {
 public:

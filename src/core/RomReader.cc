@@ -4,7 +4,7 @@
 using namespace core;
 
 RomReader::RomReader(const std::string & filename)
-    : reader_(filename, std::ios::in | std::ios::binary), header_(0)
+    : reader_(filename, std::ios::in | std::ios::binary), header_()
 {
     if (!reader_)
     {
@@ -14,7 +14,7 @@ RomReader::RomReader(const std::string & filename)
     read();
 }
 
-std::map<int, int> RomReader::map() const
+std::map<unsigned, unsigned> RomReader::map() const
 {
     return mapping_;
 }
@@ -22,7 +22,9 @@ std::map<int, int> RomReader::map() const
 RomHeader RomReader::header() const
 {
     RomHeader header;
-    header.bits = header_;
+    for (unsigned i{}; i < 16; i++) {
+        header.bits[i] = header_[i];
+    }
     return header;
 }
 
@@ -34,16 +36,11 @@ void RomReader::read() throw(std::exception)
         mapping_.insert(std::pair<int, int>(address, reader_.get()));
         address++;
     }
-    for (auto& map : mapping_)
-    {
-        header_.push_back(map.second);
-        if (map.first == 15)
-        {
-            break;
-        }
+    std::vector<int> header;
+    for (unsigned i{}; i < 16; i++) {
+        header_[i] = mapping_[i];
     }
-    if (!is_header_ok())
-    {
+    if (!is_header_ok()) {
         throw tools::NesemuException { "Bad ROM header" };
     }
 }
@@ -62,10 +59,6 @@ bool RomReader::is_header_ok() const
     10: Flags 10 (unofficial)
     11-15: Zero filled
     */
-    if (header_.size() != 16)
-    {
-        return false;
-    }
     // ...
     return (header_[0] == 'N' && header_[1] == 'E' && header_[2] == 'S' && header_[3] == 0x1a);
 }

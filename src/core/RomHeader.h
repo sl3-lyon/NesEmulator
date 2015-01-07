@@ -6,12 +6,17 @@
 
 enum TvSystem { Ntsc, Pal };
 
+constexpr int maxPrgBankSize = 16384;
+constexpr int maxChrBankSize = 8192;
+
 struct RomHeader
 {
-    std::vector<int> bits;
-    std::array<int, 0x1fff> sram;
-    //int PrgRomPagesCount;
-    //int ChrRomPagesCount;
+    std::array<unsigned, 16> bits;
+    std::array<unsigned, 0x1fff> sram;
+    int prgRomPagesCount;
+    int prgBanksCount;
+    int chrRomPagesCount;
+    int chrBanksCount;
 };
 
 #endif // NESEMU_ROMHEADER

@@ -1,6 +1,7 @@
 #ifndef NESEMU_ROMREADER
 #define NESEMU_ROMREADER
 
+#include <array>   // std::array
 #include <fstream> // std::ifstream
 #include <map>     // std::map
 #include <string>  // std::string
@@ -14,14 +15,14 @@ class RomReader
 {
 public:
     explicit RomReader(const std::string& filename);
-    std::map<int, int> map() const;
+    std::map<unsigned, unsigned> map() const;
     RomHeader header() const;
 private:
     void read() throw(std::exception);
     bool is_header_ok() const;
-    std::map<int, int> mapping_;
+    std::map<unsigned, unsigned> mapping_;
     std::ifstream reader_;
-    std::vector<int> header_;
+    std::array<unsigned, 16> header_;
 };
 
 } // core
