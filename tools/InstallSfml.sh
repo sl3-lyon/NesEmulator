@@ -1,1 +1,1 @@
-apt install libsfml-dev
+apt-get install libsfml-dev

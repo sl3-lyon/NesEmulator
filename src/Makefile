@@ -3,7 +3,7 @@ CLANG=clang++
 # Fichiers objets (.o) -> 1 par dossier / module
 SFMLOBJ=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # Différents fichiers selon les modules
-CORE=core/core.cc core/RomReader.cc
+CORE=core/core.cc core/RomReader.cc core/RomHeaderAnalyzer.cc
 CPU=cpu/cpu.cc
 GRAPHICS=graphics/graphics.cc
 TOOLS=tools/tools.cc
