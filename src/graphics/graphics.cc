@@ -1,8 +1,10 @@
 #include "graphics.h"
 
+#include <bitset>    // std::bitset
 #include <exception>
 #include <iostream>
 #include <thread>
+#include <string>    // std::string
 #include <vector>
 
 sf::RenderWindow *window;
@@ -13,6 +15,30 @@ std::thread main_thread;
  *        2. Afficher le sprite correspondant selon l'opcode
  */
 
+namespace color {
+
+    inline std::string getSpriteCode(unsigned fb, unsigned sb)
+    {
+        auto firstByte = std::bitset<8>(fb).to_string();
+        auto secondByte = std::bitset<8>(sb).to_string();
+        std::string code;
+        for (unsigned i{}; i < 8; i++)
+        {
+            if (firstByte[i] == '1' && secondByte[i] == '0')
+            {
+                code += "1";
+            }
+            else if (secondByte[i] == '1' && firstByte[i] == '0') {
+                code += "2";
+            }
+            else {
+                code += "3";
+            }
+        }
+        return std::string(code.rbegin(), code.rend());
+    }
+
+}
 void graphics::show()
 {
     // TEST
