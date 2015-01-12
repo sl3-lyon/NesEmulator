@@ -1,7 +1,10 @@
 #include <iostream>
+#include <stack>    // std::stack
 #include "cpu.h"
 
 using namespace constants;
+
+std::stack<unsigned> Stack;       // Real stack ; S points to the last entrie
 
 namespace registers
 {
