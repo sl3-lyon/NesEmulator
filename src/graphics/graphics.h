@@ -35,7 +35,7 @@ namespace colors {
         0xF8D878, 0xD8F878, 0xB8F8B8, 0xB8F8D8, 0x00FCFC, 0xF8D8F8, 0x000000, 0x000000
     }};
     
-    inline std::string getSpriteCode(unsigned fb, unsigned sb);
+    inline std::string getTileCode(unsigned fb, unsigned sb);
 } // colors
 
 struct Color : public NonCopyable
