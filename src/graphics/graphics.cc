@@ -17,7 +17,7 @@ std::thread main_thread;
 
 namespace color {
 
-    inline std::string getSpriteCode(unsigned fb, unsigned sb)
+    inline std::string getTileCode(unsigned fb, unsigned sb)
     {
         auto firstByte = std::bitset<8>(fb).to_string();
         auto secondByte = std::bitset<8>(sb).to_string();
