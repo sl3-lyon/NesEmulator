@@ -4,7 +4,7 @@
 
 using namespace constants;
 
-std::stack<unsigned> Stack;       // Real stack ; S points to the last entrie
+std::stack<unsigned> Stack;       // Real stack ; S points to the last entry
 
 namespace registers
 {
