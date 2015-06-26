@@ -11,8 +11,8 @@ EXEC=emulator
 # Flags clang++
 CXXFLAGS=-std=c++1y -pedantic-errors -Wall -Wdeprecated-writable-strings -Werror \
          -Wextra -Wsign-conversion -Wswitch-enum -Wtype-limits -Wundef -Wunused-variable -pthread
-SOURCES=$(CORE) $(CPU) $(GRAPHICS) $(TOOLS) main.cc
-LIBS=-llua #lib/lua5.2.3.a
+SOURCES=main.cc #$(CORE) $(CPU) $(GRAPHICS) $(TOOLS) main.cc
+LIBS=#lib/lua5.2.3.a
 
 # Flags:
 # @> -std=c++1y > activation de C++14
@@ -30,7 +30,7 @@ $(EXEC): clean $(SFMLOBJ)
 	@echo "Making emulator (NO LUA)"
 	@$(CLANG) $(CXXFLAGS) $(SFMLOBJ) $(SOURCES) -o $(EXEC) $(LIBS)
 	@echo "Done"
-	
+
 debug: clean $(SFMLOBJ)
 	@echo "Making emulator (DEBUG, NO LUA)"
 	@$(CLANG) $(CXXFLAGS) -DDEBUG $(SFMLOBJ) $(SOURCES) -o $(EXEC) $(LIBS)
