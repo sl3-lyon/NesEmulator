@@ -12,7 +12,7 @@ EXEC=emulator
 CXXFLAGS=-std=c++1y -pedantic-errors -Wall -Wdeprecated-writable-strings -Werror \
          -Wextra -Wsign-conversion -Wswitch-enum -Wtype-limits -Wundef -Wunused-variable -pthread
 SOURCES=main.cc #$(CORE) $(CPU) $(GRAPHICS) $(TOOLS) main.cc
-LIBS=#lib/lua5.2.3.a
+LIBS=liblua.so.5.3.1
 
 # Flags:
 # @> -std=c++1y > activation de C++14
